@@ -1,0 +1,7 @@
+<vet-admin-table title="Patients"
+                 withNav="false"
+                 (eventCreateRow)="createPatient()"
+                 [columns]="tableColumns"
+                 [eventOnLoad]="onLoad"
+                 (eventOpenRow)="openRow($event)"
+></vet-admin-table>

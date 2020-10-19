@@ -1,0 +1,27 @@
+<nav class="navbar navbar-light bg-light mb-3" *ngIf="withNav">
+  <a class="navbar-brand">{{ title }}</a>
+  <div class="d-flex">
+    <input class="btn btn-primary" type="button" value="New" (click)="newRow()">
+  </div>
+</nav>
+<table class="table table-sm table-hover mb-3">
+  <thead class="thead-dark">
+    <tr>
+      <th [width]="(100 / columns.length) + '%'" *ngFor="let column of columns">{{ column.label }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows" (dblclick)="openRow(row)">
+      <td *ngFor="let column of columns">{{ getValue(row, column) }}</td>
+    </tr>
+    <tr *ngIf="rows.length === 0">
+      <td [colSpan]="columns.length" class="text-center">NO RESULT FOUND</td>
+    </tr>
+  </tbody>
+</table>
+<ngb-pagination class="d-flex justify-content-center"
+                [pageSize]="limit"
+                [collectionSize]="count"
+                [(page)]="page"
+                (pageChange)="pageChange($event)"
+></ngb-pagination>

@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light mb-3">
+  <a class="navbar-brand">Appointments</a>
+  <div class="d-flex">
+    <div class="input-group">
+      <input class="form-control" required id="date" (dateSelect)="onDateChange($event)"
+             placeholder="yyyy-mm-dd" name="date" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+          Date
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<vet-admin-table title="Appointments"
+                 [withNav]="false"
+                 [columns]="tableColumns"
+                 [eventOnLoad]="onLoad"
+                 (eventOpenRow)="openRow($event)"
+></vet-admin-table>
